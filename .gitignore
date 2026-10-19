@@ -1,0 +1,27 @@
+# IDEA
+.idea/
+*.iml
+out/
+target/
+
+# VSCode
+.vscode/
+
+# class编译文件
+*.class
+
+# 日志
+*.log
+
+# Maven
+/target
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# 系统垃圾文件
+.DS_Store
+Thumbs.db
