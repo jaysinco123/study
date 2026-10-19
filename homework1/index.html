@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8"
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>个人简历</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+<body>
+	<header class="site-header">
+		
+		<a class="logo"href="#about">
+		<span class="logo-mark">G</span>
+		<span class="logo-text">个人简历</span>
+		</a>
+		
+		<nav class="nav" aria-label="主导航">
+			<ul class="nav-list">
+				<li><a href="#about">自我介绍</a></li>
+				<li><a href="#skills">专业技能</a></li>
+				<li><a href="#projects">作品列表</a></li>
+				<li><a href="#contact">给我留言</a></li>
+			</ul>
+		</nav>
+		
+	</header>
+	
+	<mean>
+		<section id="about">
+			
+			<div class="about-text">
+				<h1>你好，我是郭群鑫</h1>
+				<p class="about-subtitle">计算机科学与技术专业 · 本科在读</p>
+				<p>我喜欢用代码把想法变成看得见、点得动的页面。目前正在系统学习 Web 应用开发，从 HTML 语义化标签到 CSS 弹性布局，每一次实验我都尽量自己动手写一遍、再调试一遍。</p>
+                <p>我的目标，成为优秀的程序员</p>
+                <a class="btn" href="#projects">看看我的作品</a>
+			</div>
+			
+			<img class="avatar" src="images/avatar.svg" alt="个人头像">
+			
+		</section>
+		<section id="skills">
+		            <h2>专业技能与教育经历</h2>
+		
+		            <ul class="skill-list">
+		                <li>javaweb网页设计</li>
+		                <li>c语言程序设计</li>
+		                <li>python程序设计</li>
+		                <li>单片机</li>
+		                <li>数据库</li>
+		                <li>计算机网络</li>
+		                <li>数据结构</li>
+		            </ul>
+		
+		            <ul class="edu-list">
+		                <li>
+		                    <span class="edu-year">2023.09 — 至今</span>
+		                    <span>四川轻化工大学 · 计算机科学与技术（本科）</span>
+		                </li>
+		                <li>
+		                    <span class="edu-year">主修课程</span>
+		                    <span>Web 应用开发、c语言程序设计、数据库原理与应用、计算机网络</span>
+		                </li>
+		            </ul>
+		        </section>
+		
+		        <section id="projects">
+		            <h2>我的作品</h2>
+		            <p class="section-desc">下面是我在学习过程中完成的三个练习作品</p>
+		
+		            <ul class="work-list">
+		                <li class="work-item">
+		                    <img src="images/work-1.svg" alt="响应式个人简历作品的预览图">
+		                    <h3>响应式个人简历</h3>
+		                    <p>用 HTML5 语义化标签搭建页面骨架，通过 Flex 弹性布局与媒体查询，让同一套代码在电脑和手机上都能正常显示。</p>
+		                    <p class="work-tags">HTML5 · CSS3 · Flex · 媒体查询</p>
+		                </li>
+		
+		                <li class="work-item">
+		                    <img src="images/work-2.svg" alt="Servlet 留言板作品的预览图">
+		                    <h3>Servlet 留言板</h3>
+		                    <p>用 Maven 搭建 Web 工程，由 Servlet 接收表单数据、JDBC 把留言写入 MySQL 数据库，再回显到页面上。</p>
+		                    <p class="work-tags">Maven · Servlet · JDBC · MySQL</p>
+		                </li>
+		
+		                <li class="work-item">
+		                    <img src="images/work-3.svg" alt="学习数据统计页作品的预览图">
+		                    <h3>学习数据统计页</h3>
+		                    <p>把每周的学习时长整理成图表页面，练习表格、列表与弹性布局的组合使用，让数据一眼就能看懂。</p>
+		                    <p class="work-tags">HTML 表格 · 数据可视化 · 弹性布局</p>
+		                </li>
+		            </ul>
+		        </section>
+		
+		        <section id="contact">
+		            <h2>给我留言</h2>
+		            <p class="section-desc">如果你对我的作品感兴趣，或者想一起交流学习经验，欢迎在下面留言。</p>
+		
+		            <form class="contact-form" action="#" method="post">
+		                <p class="form-item">
+		                    <label for="name">你的称呼</label>
+		                    <input type="text" id="name" name="name" placeholder="请输入你的称呼" required>
+		                </p>
+		
+		                <p class="form-item">
+		                    <label for="email">电子邮箱</label>
+		                    <input type="email" id="email" name="email" placeholder="请输入你的邮箱" required>
+		                </p>
+		
+		                <p class="form-item">
+		                    <label for="message">留言内容</label>
+		                    <textarea id="message" name="message" rows="5" placeholder="请输入你想说的话"></textarea>
+		                </p>
+		
+		                <button class="btn btn-submit" type="submit">提交留言</button>
+		            </form>
+		        </section>
+		    </main>
+</body>
