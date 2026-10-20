@@ -302,6 +302,133 @@ h2 {
     color: var(--color-text-light);
     border-top: 1px solid var(--color-border);
 }
+/* 主题切换
+ /* ============================================================
+    3. 实验二新增：暗色主题、主题按钮与表单校验提示
+    注意：本节写在媒体查询之前，保证媒体查询始终位于文件最末尾
+    ============================================================ */
+ 
+ /* ---------- 3.1 暗色主题：body 拥有 dark 类时，下面这组变量才生效 ----------
+    实验一里所有组件颜色都是通过 var() 引用变量的，
+    所以只要在这里覆盖变量的值，整页配色就会一起切换 */
+ body.dark {
+     --color-primary: #2dd4bf;
+     --color-primary-dark: #14b8a6;
+     --color-accent: #fbbf24;
+     --color-text: #e2e8f0;
+     --color-text-light: #94a3b8;
+     --color-bg: #0f172a;
+     --color-card: #1e293b;
+     --color-border: #334155;
+     --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+     color: var(--color-text);
+     background-color: var(--color-bg);
+ }
+ 
+ /* 后代选择器：只有 body 带 dark 类时，下面这些规则才生效 */
+ body.dark .site-header {
+     background-color: var(--color-card);
+     border-color: var(--color-border);
+ }
+ 
+ /* 暗色下主题色变亮，提交按钮的文字改用深色，保证对比度 */
+ body.dark .btn-submit {
+     color: #04211d;
+ }
+ 
+ /* 实验一里写死的浅色，需要在暗色主题下逐一覆盖 */
+ body.dark .nav-list a:hover {
+     background-color: #334155;
+     color: #7dd3fc;
+ }
+ 
+ body.dark .avatar {
+     border-color: var(--color-card);
+     background-color: #334155;
+ }
+ 
+ body.dark .form-item input,
+ body.dark .form-item textarea {
+     background-color: #0f172a;
+     border-color: #334155;
+     color: var(--color-text);
+ }
+ 
+ body.dark .form-item input:focus,
+ body.dark .form-item textarea:focus {
+     background-color: #111f38;
+     border-color: var(--color-primary);
+ }
+ 
+ /* ---------- 3.2 主题切换按钮（放在头部右侧） ---------- */
+ .theme-btn {
+     flex-shrink: 0;
+     /* 头部空间不足时按钮不被压扁 */
+     padding: 8px 18px;
+     /* 比通用按钮更紧凑，方便放进胶囊形头部 */
+     font-size: 0.875rem;
+     border: 1px solid var(--color-primary);
+     background-color: transparent;
+     color: var(--color-primary);
+ }
+ 
+ .theme-btn:hover {
+     background-color: var(--color-primary);
+     color: #ffffff;
+ }
+ 
+ /* 暗色主题下按钮保持“青色描边 + 青色文字”，不要被上面那条 .btn-submit 规则带偏 */
+ body.dark .theme-btn {
+     border-color: var(--color-primary);
+     color: var(--color-primary);
+ }
+ 
+ /* 页脚时间：使用等宽数字，秒数跳动时整行文字不会左右抖动 */
+ .footer-clock {
+     margin-top: 8px;
+     font-variant-numeric: tabular-nums;
+ }
+ 
+ #clock {
+     font-weight: 700;
+     color: var(--color-primary);
+ }
+ 
+ /* ---------- 3.3 表单校验提示：错误红、成功绿、普通提示蓝 ----------
+    JS 中直接赋值 formTip.className = "tip-error"，会把 HTML 上原来的类全部替换掉，
+    所以三个状态类都要写全内边距、圆角等基础样式，不能依赖其他类 */
+ .tip-error,
+ .tip-success,
+ .tip-info {
+     padding: 10px 14px;
+     font-size: 0.875rem;
+     border-radius: 10px;
+     border: 1px solid transparent;
+     transition: background-color 0.2s, color 0.2s;
+ }
+ 
+ .tip-error {
+     /* 错误提示：浅红底 + 深红字 */
+     background-color: #fee2e2;
+     border-color: #fca5a5;
+     color: #b91c1c;
+ }
+ 
+ .tip-success {
+     /* 校验成功：浅绿底 + 深绿字 */
+     background-color: #dcfce7;
+     border-color: #86efac;
+     color: #15803d;
+ }
+ 
+ .tip-info {
+     /* 初始提示与“取消提交”时的蓝色普通提示 */
+     background-color: #e0f2fe;
+     border-color: #7dd3fc;
+     color: #0369a1;
+ }
+
+/* 媒体查询 */
 @media (max-width: 768px) {
     .site-header {
         flex-direction: column;

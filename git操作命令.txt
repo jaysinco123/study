@@ -1,0 +1,148 @@
+# Git 常用命令（作用 + 用法）
+
+> 
+> 区域概念：**工作区（本地文件）→ 暂存区 → 本地仓库 → 远程仓库**
+
+## 一、基础配置
+
+1. `git config --global user.name "名字"`
+作用：设置全局提交用户名
+用法：`git config --global user.name "zhangsan"`
+2. `git config --global user.email "邮箱"`
+作用：设置全局提交邮箱
+用法：`git config --global user.email "xxx@qq.com"`
+3. `git config --list`
+作用：查看所有 git 配置信息
+
+## 二、仓库初始化 / 克隆
+
+1. `git init`
+作用：在当前文件夹新建 git 本地仓库，生成隐藏`.git`文件夹
+用法：文件夹内执行 `git init`
+2. `git clone 远程地址`
+作用：把远程仓库完整下载到本地（包含所有分支、提交记录）
+用法：`git clone https://gitee.com/xxx/test.git`
+
+## 三、查看状态、对比差异
+
+1. `git status`
+作用：查看当前仓库状态，哪些文件修改、新增、待提交（高频）
+用法：直接 `git status`
+2. `git diff`
+作用：查看**工作区未暂存**的改动详情`git diff --staged`：查看暂存区和上一次提交的差异
+
+## 四、暂存区操作（add）
+
+1. `git add 文件名`
+作用：把指定文件从工作区加入暂存区
+用法：`git add index.html`
+2. `git add .`
+作用：当前目录**所有修改、新增文件**加入暂存区（不包括被.gitignore 忽略的）
+3. `git rm --cached 文件名`
+作用：取消暂存，文件保留在本地，不再被 git 追踪
+用法：`git rm --cached log.txt`
+
+## 五、提交本地仓库（commit）
+
+1. `git commit -m "提交说明"`
+作用：把暂存区内容生成一个版本快照，存入本地仓库
+用法：`git commit -m "完成登录页面"`
+
+> 
+> 不加 `-m` 会进入 vim 编辑器写备注
+
+## 六、查看提交日志 log
+
+1. `git log`
+作用：查看完整提交历史（commitId、作者、时间、备注）
+2. `git log --oneline`
+作用：简洁版日志，一行一条（推荐日常用）
+3. `git log --oneline --graph`
+作用：树形展示分支提交记录
+
+## 七、分支操作（重点）
+
+1. `git branch`
+作用：查看本地所有分支，`*` 代表当前所在分支`git branch -r` 查看远程分支；`git branch -a` 本地 + 远程全部分支
+2. `git branch 分支名`
+作用：新建分支（不自动切换）
+用法：`git branch dev`
+3. `git switch -c 分支名` ✅新版推荐
+作用：**创建 + 直接切换到新分支**
+等价旧写法：`git checkout -b 分支名`
+用法：`git switch -c feature/user`
+4. `git switch 分支名`
+作用：切换到已有分支
+用法：`git switch main`
+5. `git merge 分支名`
+作用：把目标分支合并到**当前所在分支**
+例：现在在 main 分支，`git merge dev` 将 dev 合并进 main，可能产生冲突
+6. `git branch -d 分支名`
+作用：安全删除本地分支（必须已经合并过）`git branch -D 分支名`：强制删除（没合并也能删）
+
+## 八、远程仓库
+
+1. `git remote add origin 远程地址`
+作用：给本地仓库绑定远程仓库，别名一般叫 origin
+用法：`git remote add origin https://gitee.com/xxx/test.git`
+2. `git remote -v`
+作用：查看远程仓库地址
+3. `git push origin 分支名`
+作用：把本地分支提交记录推送到远程
+第一次推送：`git push -u origin main`（-u 建立上下游关联，后续直接 git push）
+4. `git pull origin 分支名`
+作用：拉取远程最新代码，并且自动合并到本地当前分支（=fetch+merge）
+日常简写直接 `git pull`
+5. `git fetch`
+作用：只下载远程最新提交记录，**不自动合并**，安全查看远程更新，需要手动 merge
+
+## 九、撤销、回滚（保命命令）
+
+1. `git reset 文件名`
+作用：把文件从暂存区撤回到工作区（保留修改）
+2. `git reset --soft commitId`
+作用：回退到指定版本，**代码保留，撤销 commit，回到暂存区**
+3. `git reset --hard commitId` ⚠️危险！
+作用：回退到指定版本，**工作区、暂存区全部清空，改动直接丢失**，谨慎使用
+
+> 
+> commitId 取 git log 里前面 7 位即可
+
+4. `git restore 文件名`
+作用：丢弃工作区修改，恢复成上一提交版本（新版推荐，替代 checkout --）
+
+## 十、暂存未完成代码 stash（临时存进度）
+
+1. `git stash push -m "备注"`
+作用：临时保存当前写一半的代码，清空工作区，方便切分支改别的需求
+2. `git stash list`：查看所有贮藏记录
+3. `git stash pop`：取出最近一条贮藏，并且删掉贮藏记录
+4. `git stash apply`：取出贮藏，保留贮藏记录
+
+## 十一、其他高频
+
+1. `git mv 旧名 新名`
+作用：git 内重命名文件，会自动加入暂存区
+2. `git tag v1.0`
+作用：打版本标签，标记发布版本`git push origin v1.0` 推送标签到远程
+
+---
+
+## 标准开发流程示例
+
+```
+git init
+git add .
+git commit -m "初始化项目"
+git remote add origin xxx.git
+git push -u origin main
+
+# 开发新功能
+git switch -c feature/login
+# 改代码
+git add .
+git commit -m "登录接口"
+git switch main
+git merge feature/login
+git push
+```
