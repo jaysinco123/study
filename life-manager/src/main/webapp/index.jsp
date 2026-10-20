@@ -5,15 +5,11 @@
   Time: 20:04
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>人生管理系统</title>
-</head>
-<body style="font-family: sans-serif; padding: 40px;">
-    <h1>人生管理系统 · v1</h1>
-    <p>运行成功</p>
-    <p><a href="hello">点这里访问 HelloServlet</a></p>
-</body>
-</html>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%--
+    v2 起首页直接进入登录页。
+    用 sendRedirect 而不是 jsp:forward，地址栏会变成 /login，刷新不会重复提交。
+--%>
+<%
+    response.sendRedirect(request.getContextPath() + "/login");
+%>
