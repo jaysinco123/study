@@ -207,8 +207,7 @@
             </c:otherwise>
         </c:choose>
         <div class="next">
-            当前为 <strong>v5 任务进阶</strong>：新增优先级与截止日期，支持按状态/优先级筛选，逾期任务标红；
-            顶部统计卡片实时显示总数、已完成、待办和完成率。
+            做难事必有所得
         </div>
     </div>
 </div>
