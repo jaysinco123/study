@@ -77,7 +77,29 @@
     </div>
 
     <div class="card">
-        <h2>我的任务 <span class="count">共 ${tasks.size()} 条</span></h2>
+        <div class="bar">
+            <h2 style="margin:0">我的任务
+                <span class="count">筛选后 ${tasks.size()} 条</span>
+            </h2>
+            <div class="tabs">
+                <a class="tab ${filter eq 'all' ? 'on' : ''}"
+                   href="${ctx}/tasks?filter=all&priority=${priority}">全部</a>
+                <a class="tab ${filter eq 'todo' ? 'on' : ''}"
+                   href="${ctx}/tasks?filter=todo&priority=${priority}">未完成</a>
+                <a class="tab ${filter eq 'done' ? 'on' : ''}"
+                   href="${ctx}/tasks?filter=done&priority=${priority}">已完成</a>
+            </div>
+            <form class="filter" method="get" action="${ctx}/tasks">
+                <input type="hidden" name="filter" value="${filter}">
+                <select name="priority">
+                    <option value="0" ${priority == 0 ? 'selected' : ''}>全部优先级</option>
+                    <option value="1" ${priority == 1 ? 'selected' : ''}>高</option>
+                    <option value="2" ${priority == 2 ? 'selected' : ''}>中</option>
+                    <option value="3" ${priority == 3 ? 'selected' : ''}>低</option>
+                </select>
+                <button type="submit">筛选</button>
+            </form>
+        </div>
 
         <c:choose>
             <c:when test="${empty tasks}">
