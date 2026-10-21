@@ -22,7 +22,7 @@ public class LoginServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (currentUser(request) != null) {
-            redirect(request, response, "/dashboard");
+            redirect(request, response, "/tasks");
             return;
         }
         forward(request, response, "login.jsp");
@@ -38,7 +38,7 @@ public class LoginServlet extends BaseServlet {
             User user = userService.login(username, password);
             // 登录状态保存在 Session 中，后续请求由 LoginFilter 从这里取
             request.getSession().setAttribute(SESSION_USER, user);
-            redirect(request, response, "/dashboard");
+            redirect(request, response, "/tasks");
         } catch (ServiceException e) {
             request.setAttribute("error", e.getMessage());
             request.setAttribute("username", username);
