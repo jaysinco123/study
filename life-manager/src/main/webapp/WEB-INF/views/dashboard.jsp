@@ -29,6 +29,9 @@
         <span>${sessionScope.user.nickname}
             <span class="tag">${sessionScope.user.admin ? '管理员' : '普通用户'}</span>
         </span>
+        <c:if test="${sessionScope.user.admin}">
+            <a href="${ctx}/admin/users">用户管理</a>
+        </c:if>
         <a href="${ctx}/logout">退出</a>
     </div>
 </div>
