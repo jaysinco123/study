@@ -74,6 +74,7 @@
     <h1>人生管理系统</h1>
     <div class="right">
         <span>${sessionScope.user.nickname}<span class="tag">${sessionScope.user.admin ? '管理员' : '普通用户'}</span></span>
+		<a href="${ctx}/tasks">我的任务</a>
         <a href="${ctx}/goals">长期目标</a>
         <a href="${ctx}/bills">记账本</a>
         <c:if test="${sessionScope.user.admin}">

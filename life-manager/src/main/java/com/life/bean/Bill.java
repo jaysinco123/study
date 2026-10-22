@@ -2,10 +2,7 @@ package com.life.bean;
 
 import java.math.BigDecimal;
 
-/**
- * 收支账单实体类：字段与 t_bill 表一一对应。
- * type：1 收入，2 支出；金额用 BigDecimal 避免浮点误差。
- */
+/* 收支账单实体类：字段与 t_bill 表一一对应。 type：1 收入，2 支出；金额用 BigDecimal 避免浮点误差。 */
 public class Bill {
 
     private int id;
